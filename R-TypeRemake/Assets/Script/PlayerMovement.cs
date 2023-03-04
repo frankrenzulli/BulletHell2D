@@ -6,24 +6,48 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5.0f;
     public float fireRate = 0.5f;
     public GameObject bulletPrefab;
+    public GameObject piercingBullet;
     public Transform FirePoint;
-    public int Lives = 3;
+    public int lives = 3;
+    public int MaxHealth = 100;
+    public int currentHealth;
+
+    public HealthBar healthBar;
 
     private float nextFire = 0.01f;
+
+    private void Start()
+    {
+        currentHealth = MaxHealth;
+        healthBar.SetMaxHealth(MaxHealth);
+        
+    }
 
 
     private void Update()
     {
-        Movement();
-
-        if (Input.GetButton("Jump") && Time.time > nextFire)
+        if (!PauseMenu.isPaused)
         {
-            Shoot();
 
-        }
-        if(Lives == 0)
-        {
+
+            Movement();
+
+            if (Input.GetButton("Jump") && Time.time > nextFire)
+            {
+                Shoot();
+
+            }
+
+
+
+            if (currentHealth <= 0)
+            {
+                lives--;
+                currentHealth = MaxHealth;
+                Debug.Log(lives);
+            }
             Gameover();
+
         }
     }
 
@@ -33,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
         nextFire = Time.time + fireRate;
         Instantiate(bulletPrefab, FirePoint.position, transform.rotation);
     }
+
 
     void Movement()
     {
@@ -53,7 +78,11 @@ public class PlayerMovement : MonoBehaviour
     }
     void Gameover()
     {
-        Debug.Log("Sei morto");
+        if(lives == 0)
+        {
+            Debug.Log("Sei morto");
+        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -61,9 +90,22 @@ public class PlayerMovement : MonoBehaviour
         if(collision.tag == "Enemy")
         {
             
-            Lives--;
+            lives--;
             Destroy(collision.gameObject);
         }
     }
 
+    public void TakeDamage(int damage)
+    {
+
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
+    }
+
+    void PiercingShoot()
+    {
+        //shooting logic
+        nextFire = Time.time + fireRate;
+        Instantiate(piercingBullet, FirePoint.position, transform.rotation);
+    }
 }

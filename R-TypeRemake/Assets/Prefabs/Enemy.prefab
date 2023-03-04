@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1865544739191527144}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.497, y: 0, z: 0}
+  m_LocalPosition: {x: 0.312, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 7272206183621031773}
   - component: {fileID: -3615175708710695752}
   - component: {fileID: 6196299822720111582}
+  - component: {fileID: -9007890691118184526}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -59,7 +60,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5752159516428776225}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
@@ -67,7 +68,7 @@ Transform:
   - {fileID: 3816825389902713721}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!212 &2917199044752556166
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -146,8 +147,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00029110909, y: 0.0077627897}
-  m_Size: {x: 1.0050831, y: 1.9678471}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.6, y: 0.6}
   m_Direction: 0
 --- !u!114 &-3615175708710695752
 MonoBehaviour:
@@ -183,3 +184,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-9007890691118184526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5752159516428776225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5268f9f647673da488f4cee5e81a63e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 2011998112005684152, guid: 5f51d6294ad6fec4ab4041a9c7abbef6, type: 3}
+  bulletPos: {fileID: 3816825389902713721}

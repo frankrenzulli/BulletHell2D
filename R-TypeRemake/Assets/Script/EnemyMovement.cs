@@ -16,5 +16,11 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector2.left * speed * Time.deltaTime);
+        Vector3 screenPos = Camera.main.WorldToViewportPoint(transform.position);
+        if (screenPos.x < 0f)
+        {
+            // distruggi l'oggetto
+            Destroy(gameObject);
+        }
     }
 }
