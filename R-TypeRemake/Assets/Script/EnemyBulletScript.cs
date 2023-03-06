@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyBulletScript : MonoBehaviour
 {
-    private GameObject player;
-    private Rigidbody2D rb;
+    [SerializeField] GameObject player;
+    [SerializeField] Rigidbody2D rb;
     public float force;
     public int damage;
    
@@ -35,14 +35,17 @@ public class EnemyBulletScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-        if (collision.gameObject.CompareTag("Player"))
+        PlayerMovement player = collision.gameObject.GetComponent<PlayerMovement>();
+        if (collision.tag == "Player" && player.immunity == false)
         {
-            PlayerMovement playerhealth = collision.gameObject.GetComponent<PlayerMovement>();
-            if(playerhealth != null)
+            if(player != null)
             {
-                playerhealth.TakeDamage(damage);
+                player.TakeDamage(damage);
             }
+            Destroy(gameObject);
+        }
+        if (collision.tag == "immunityAura")
+        {
             Destroy(gameObject);
         }
 

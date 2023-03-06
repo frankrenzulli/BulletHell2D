@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 public class GameStart : MonoBehaviour
 {
     public Animator StartAnim;
-    public GameObject pauseMenu;
-    // Start is called before the first frame update
+    public GameManager gm;
+
     public void PlayGame()
     {
         StartAnim.SetTrigger("StartTrig");
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        
+
         
     }
 

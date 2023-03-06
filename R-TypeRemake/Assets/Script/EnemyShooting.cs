@@ -6,28 +6,28 @@ public class EnemyShooting : MonoBehaviour
 {
     public GameObject bullet;
     public Transform bulletPos;
+    public float nextFire;
+    public float fireRate;
 
-    private float timer;
-    // Start is called before the first frame update
+    [SerializeField] float timer;
     void Start()
     {
-        
+       
     }
 
-    // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
 
-        if (timer > 1) 
+        if (Time.time > nextFire)
         {
-            timer = 0;
+
             Shoot();
         }
     }
 
     void Shoot()
     {
+        nextFire = Time.time + fireRate;
         Instantiate(bullet, bulletPos.position, Quaternion.identity);
     }
 }

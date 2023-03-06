@@ -4,21 +4,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int health = 100;
-
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-
-        if (health <= 0)
-        {
-            Die();
-        }
-    }
+    public int health;
+    public float speed = 5;
 
     private void Update()
     {
-        
+        Movement();
     }
 
     void Die()
@@ -28,5 +19,24 @@ public class Enemy : MonoBehaviour
     void OnBecameInvisible()
     {
         Destroy(gameObject);
+    }
+    void Movement()
+    {
+        transform.Translate(Vector2.left * speed * Time.deltaTime);
+        Vector3 screenPos = Camera.main.WorldToViewportPoint(transform.position);
+        if (screenPos.x < 0f)
+        {
+            // distruggi l'oggetto
+            Destroy(gameObject);
+        }
+    }
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+        {
+            Die();
+        }
     }
 }

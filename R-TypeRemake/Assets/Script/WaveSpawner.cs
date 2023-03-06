@@ -19,15 +19,21 @@ public class WaveSpawner : MonoBehaviour
     public Animator animator;
     public Text WaveName;
 
-    private Wave CurrentWave;
-    private int currentWaveNumber;
-    private float nextSpawnTime;
+    [SerializeField] Wave CurrentWave;
+    [SerializeField] int currentWaveNumber;
+    [SerializeField] float nextSpawnTime;
 
     private bool canAnimate = false; 
     public bool canSpawn = true;
 
-
+    public GameObject Boss;
     
+
+
+    private void Start()
+    {
+        
+    }
 
 
     private void Update()
@@ -50,7 +56,8 @@ public class WaveSpawner : MonoBehaviour
             }
             else
             {
-                Debug.Log("Game Finished!");
+                Boss.SetActive(true);
+                
             }
 
 

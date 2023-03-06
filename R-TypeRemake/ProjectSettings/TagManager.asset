@@ -8,6 +8,10 @@ TagManager:
   - Bullet
   - EnemyBullet
   - BossShield
+  - boss
+  - gamemanager
+  - levelwin
+  - immunityAura
   layers:
   - Default
   - TransparentFX

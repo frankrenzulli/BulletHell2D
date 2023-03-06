@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelChanger : MonoBehaviour
 {
-    // Start is called before the first frame update
+
     public Animator animator;
     private int levelToLoad;
     void Update()
@@ -26,6 +26,6 @@ public class LevelChanger : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
-    // Update is called once per frame
+
     
 }
